@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDMYDA_API_AlvaresR_EncinasG_MendivilB", "SDMYDA_API_AlvaresR_EncinasG_MendivilB\SDMYDA_API_AlvaresR_EncinasG_MendivilB.csproj", "{8D6CCC72-98BA-45B7-8E48-C111FB5A6BFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB", "DB\DB.csproj", "{694D82DC-819A-481C-BBC6-07284D4F260C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D6CCC72-98BA-45B7-8E48-C111FB5A6BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D6CCC72-98BA-45B7-8E48-C111FB5A6BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D6CCC72-98BA-45B7-8E48-C111FB5A6BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D6CCC72-98BA-45B7-8E48-C111FB5A6BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{694D82DC-819A-481C-BBC6-07284D4F260C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{694D82DC-819A-481C-BBC6-07284D4F260C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{694D82DC-819A-481C-BBC6-07284D4F260C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{694D82DC-819A-481C-BBC6-07284D4F260C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B35F8BA-5A3E-4A9C-8B32-660DBD27C73E}
+	EndGlobalSection
+EndGlobal
