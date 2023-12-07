@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services;
+using SDMYDA_API_AlvaresR_EncinasG_MendivilB.ViewModel;
 
 namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
 {
@@ -24,14 +25,14 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
         }
 
         [HttpPost("agregar-usuario")]
-        public IActionResult AgregarUsuario(Usuario nuevoUsuario)
+        public IActionResult AgregarUsuario(UsuarioVM nuevoUsuario)
         {
             _userService.AgregarUsuario(nuevoUsuario);
             return Ok();
         }
 
         [HttpPut("editar-usuario")]
-        public IActionResult EditaUsuario(int idUsuario, [FromBody]Usuario userUpdate)
+        public IActionResult EditaUsuario(int idUsuario, [FromBody]UsuarioVM userUpdate)
         {
             _userService.UpdateUser(idUsuario,userUpdate);
             return Ok($"Usuario {userUpdate} actualizado");

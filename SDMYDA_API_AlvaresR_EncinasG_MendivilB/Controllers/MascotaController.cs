@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services;
+using SDMYDA_API_AlvaresR_EncinasG_MendivilB.ViewModel;
 
 namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
 {
@@ -23,7 +24,7 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
         }
 
         [HttpPost("agregar-mascota")]
-        public IActionResult AgregarMascota(Mascota nuevaMascota)
+        public IActionResult AgregarMascota(MascotaViewModel nuevaMascota)
         {
             _mascotaService.AgregarMascota(nuevaMascota);
             return Ok($"mascota: {nuevaMascota.Nombre} agregada");
