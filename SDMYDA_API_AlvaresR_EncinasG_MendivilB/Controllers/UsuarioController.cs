@@ -32,7 +32,7 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
         }
 
         [HttpPut("editar-usuario")]
-        public IActionResult EditaUsuario(int idUsuario, [FromBody]UsuarioVM userUpdate)
+        public IActionResult EditaUsuario(int idUsuario, [FromBody]UsuarioSinPasswordVM userUpdate)
         {
             _userService.UpdateUser(idUsuario,userUpdate);
             return Ok($"Usuario {userUpdate} actualizado");

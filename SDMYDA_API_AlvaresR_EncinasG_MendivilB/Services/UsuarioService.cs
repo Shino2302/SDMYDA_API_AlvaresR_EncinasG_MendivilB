@@ -20,7 +20,8 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services
                 Nombre = nuevoUsuario.Nombre,
                 Apellido = nuevoUsuario.Apellido,
                 Telefono = nuevoUsuario.Telefono,
-                Email = nuevoUsuario.Email
+                Email = nuevoUsuario.Email,
+                Password = nuevoUsuario.Password
             };
 
             _context.Usuarios.Add(_usuario);
@@ -29,7 +30,7 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services
 
         public List<Usuario> ListarUsuarios() => _context.Usuarios.ToList();
 
-        public Usuario UpdateUser(int userId, UsuarioVM user)
+        public Usuario UpdateUser(int userId, UsuarioSinPasswordVM user)
         {
             var usuario = _context.Usuarios.FirstOrDefault(n => n.IdUsuario == userId);
             if (usuario != null) 
@@ -38,18 +39,35 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services
                 usuario.Apellido = user.Apellido;
                 usuario.Telefono = user.Telefono;
                 usuario.Email = user.Email;
+                usuario.Password = usuario.Password;
                 _context.SaveChanges();
             }
             return usuario;
         }
 
-        public async Task<List<Mascota>> ListaDeMascotasPorUsuario(int userId)
-        {
-            var mascotas = await _context.Mascotas
-                .Where(m => m.IdUsuario1 == userId)
-                .ToListAsync();
+        //public async Task<List<Mascota>> ListaDeMascotasPorUsuario(int userId)
+        //{
+        //    var mascotas = await _context.Mascotas
+        //        .Where(m => m.IdUsuario1 == userId)
+        //        .ToListAsync();
 
-            return mascotas;
+        //    return mascotas;
+        //}
+
+        public UsuarioConMascotasVM ListaDeMascotasPorUsuario(int idUsuario)
+        {
+            var mascotas = _context.Mascotas.Where(n => n.IdUsuario1 == idUsuario).ToList();
+            var _usuario = _context.Usuarios.Where(n => n.IdUsuario == idUsuario).Select(
+                n => new UsuarioConMascotasVM
+                {
+                    IdUsuario = idUsuario,
+                    Nombre = n.Nombre,
+                    Apellido = n.Apellido,
+                    Telefono = n.Telefono,
+                    Email = n.Email,
+                    Mascotas = mascotas
+                }).FirstOrDefault();
+            return _usuario;
         }
 
         public void EliminarUsuario(int userId)

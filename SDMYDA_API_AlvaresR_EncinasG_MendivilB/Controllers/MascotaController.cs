@@ -31,7 +31,7 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
         }
 
         [HttpPut("editar-mascota")]
-        public IActionResult EditarMascota(int idMascota ,[FromBody]Mascota mascotaActualizada)
+        public IActionResult EditarMascota(int idMascota ,[FromBody]MascotaViewModel mascotaActualizada)
         {
             _mascotaService.ActualizarMascota(idMascota, mascotaActualizada);
             return Ok($"mascota: {mascotaActualizada.Nombre} actualizada");

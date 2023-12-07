@@ -21,14 +21,16 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services
                 Apodo = nuevaMascota.Apodo,
                 Edad = nuevaMascota.Edad,
                 Raza = nuevaMascota.Raza,
-                IdUsuario1 = nuevaMascota.IdUsuario1
+
             };
+
+
 
             _context.Mascotas.Add(_mascota);
             _context.SaveChanges();
         }
 
-        public Mascota ActualizarMascota(int idMascota, Mascota mascota)
+        public Mascota ActualizarMascota(int idMascota, MascotaViewModel mascota)
         {
             var _mascota = _context.Mascotas.FirstOrDefault(n => n.IdMascota == idMascota);
 
@@ -38,6 +40,7 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services
                 _mascota.Apodo = mascota.Apodo;
                 _mascota.Raza = mascota.Raza;
                 _mascota.Edad = mascota.Edad;
+                _mascota.IdUsuario1 = mascota.IdUsuario1;
                 _context.SaveChanges();
             }
             return _mascota;

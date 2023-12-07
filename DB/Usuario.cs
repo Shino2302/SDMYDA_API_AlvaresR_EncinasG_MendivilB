@@ -17,6 +17,7 @@ namespace DB
         public string Apellido { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         
         public virtual ICollection<Mascota> Mascotas { get; set; }
     }
