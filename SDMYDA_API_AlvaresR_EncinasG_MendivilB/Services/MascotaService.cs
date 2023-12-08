@@ -21,7 +21,7 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services
                 Apodo = nuevaMascota.Apodo,
                 Edad = nuevaMascota.Edad,
                 Raza = nuevaMascota.Raza,
-
+                IdUsuario1 = nuevaMascota.IdUsuario1
             };
 
 
@@ -40,7 +40,7 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services
                 _mascota.Apodo = mascota.Apodo;
                 _mascota.Raza = mascota.Raza;
                 _mascota.Edad = mascota.Edad;
-                _mascota.IdUsuario1 = mascota.IdUsuario1;
+               // _mascota.IdUsuario1 = mascota.IdUsuario1;
                 _context.SaveChanges();
             }
             return _mascota;

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services;
 using SDMYDA_API_AlvaresR_EncinasG_MendivilB.ViewModel;
+using SDMYDA_API_AlvaresR_EncinasG_MendivilB.Excepciones;
 
 namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
 {
@@ -27,8 +28,19 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
         [HttpPost("agregar-usuario")]
         public IActionResult AgregarUsuario(UsuarioVM nuevoUsuario)
         {
-            _userService.AgregarUsuario(nuevoUsuario);
-            return Ok();
+            try
+            {
+                _userService.AgregarUsuario(nuevoUsuario);
+                return Ok();
+            }
+            catch(ExcepcionesNombresDeUsuario ex)
+            {
+                return BadRequest($"{ex.Message}");
+            }
+            catch(Exception ex) 
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("editar-usuario")]
@@ -37,8 +49,8 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
             _userService.UpdateUser(idUsuario,userUpdate);
             return Ok($"Usuario {userUpdate} actualizado");
         }
-        /*
-        [HttpGet("lista-mascotas/{userId}/mascotas}")]
+        
+        [HttpGet("listar-mascotas")]
         public IActionResult ListarMascotasDeUsuario(int userId)
         {
             var mascotas = _userService.ListaDeMascotasPorUsuario(userId);
@@ -50,12 +62,18 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
 
             return Ok(mascotas);
         }
-        */
         [HttpDelete("eliminar-usuario")]
         public IActionResult EliminarUsuario(int userId) 
         {
-            _userService.EliminarUsuario(userId);
-            return Ok("Usuario Eliminado");
+            try
+            {
+                _userService.EliminarUsuario(userId);
+                return Ok("Usuario Eliminado");
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

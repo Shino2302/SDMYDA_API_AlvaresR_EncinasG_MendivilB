@@ -26,8 +26,15 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
         [HttpPost("agregar-mascota")]
         public IActionResult AgregarMascota(MascotaViewModel nuevaMascota)
         {
-            _mascotaService.AgregarMascota(nuevaMascota);
-            return Ok($"mascota: {nuevaMascota.Nombre} agregada");
+            try
+            {
+                _mascotaService.AgregarMascota(nuevaMascota);
+                return Ok($"mascota: {nuevaMascota.Nombre} agregada");
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("editar-mascota")]
@@ -61,10 +68,8 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Controllers
         [HttpPost("{idMascota}/agregar-hora-programada")]
         public async Task<ActionResult> AgregarHoraProgramada(int idMascota, HoraProgramada nuevaHoraProgramada)
         {
-            // Primero, crea la hora programada
             int idNuevaHoraProgramada =  await _programadaService.CrearHoraProgramada(nuevaHoraProgramada);
 
-            // Luego, crea el detalle asociando la mascota con la nueva hora programada
             _detalleService.CrearDetalleMascotaHoraProgramada(idMascota, idNuevaHoraProgramada);
 
             return Ok();

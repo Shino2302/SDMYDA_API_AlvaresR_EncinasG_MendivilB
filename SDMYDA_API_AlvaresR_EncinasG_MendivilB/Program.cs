@@ -21,7 +21,7 @@ builder.Services.AddDbContext<SDMYDAContext>(options =>
 builder.Services.AddTransient<UsuarioService>();
 builder.Services.AddTransient<MascotaService>();
 builder.Services.AddTransient<DetalleMascotaHoraProgramadaService>();
-builder.Services.AddTransient<HoraProgramada>();
+builder.Services.AddTransient<HoraProgramadaService>();
 
 var app = builder.Build();
 

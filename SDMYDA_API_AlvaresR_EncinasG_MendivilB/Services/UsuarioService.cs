@@ -1,5 +1,6 @@
 ﻿using DB;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using SDMYDA_API_AlvaresR_EncinasG_MendivilB.ViewModel;
 
 namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services
@@ -28,7 +29,24 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services
             _context.SaveChanges();
         }
 
+        //public UsuarioConMascotasVM ListarConMascotas(int idUsuario)
+        //{
+        //    var _mascotas = _context.Mascotas.Where(n => n.IdUsuario1 == idUsuario).ToList();
+        //    var _usuarioConMascotas = _context.Usuarios.Where(n => n.IdUsuario == idUsuario).Select(usuario => new UsuarioConMascotasVM ()
+        //    {
+        //        IdUsuario = usuario.IdUsuario,
+        //        Nombre = usuario.Nombre,
+        //        Apellido = usuario.Apellido,
+        //        Telefono = usuario.Telefono,
+        //        Email = usuario.Email,
+        //        Mascotas = _mascotas
+        //    }).FirstOrDefault();
+
+        //    return _usuarioConMascotas;
+        //} 
+
         public List<Usuario> ListarUsuarios() => _context.Usuarios.ToList();
+
 
         public Usuario UpdateUser(int userId, UsuarioSinPasswordVM user)
         {
@@ -44,15 +62,6 @@ namespace SDMYDA_API_AlvaresR_EncinasG_MendivilB.Services
             }
             return usuario;
         }
-
-        //public async Task<List<Mascota>> ListaDeMascotasPorUsuario(int userId)
-        //{
-        //    var mascotas = await _context.Mascotas
-        //        .Where(m => m.IdUsuario1 == userId)
-        //        .ToListAsync();
-
-        //    return mascotas;
-        //}
 
         public UsuarioConMascotasVM ListaDeMascotasPorUsuario(int idUsuario)
         {
